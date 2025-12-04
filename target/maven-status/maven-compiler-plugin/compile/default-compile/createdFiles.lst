@@ -1,0 +1,6 @@
+ec\edu\espoch\stackkfx\App.class
+ec\edu\espoch\stackkfx\model\Stack.class
+module-info.class
+ec\edu\espoch\stackkfx\controller\StackController.class
+ec\edu\espoch\stackkfx\model\Nodo.class
+ec\edu\espoch\stackkfx\view\StackCanvas.class
