@@ -18,58 +18,80 @@ public class StackController {
 
     @FXML
     private TextField txtValue;
+
     @FXML
     private StackPane canvasHolder;
-    private StackCanvas canvas; 
-    
-    private final Stack stack = new Stack ();
-    
+
+    private StackCanvas canvas;
+    private final Stack stack = new Stack();
+
     @FXML
     private void initialize() {
         canvas = new StackCanvas();
         canvasHolder.getChildren().add(canvas);
-
-        canvas.clearHighlight();
         refreshView();
     }
 
+    // ================================
+    // PUSH
+    // ================================
     @FXML
     private void push() {
-        System.out.println("Hola Pedro");
         Integer v = readInt();
-        if (v == null) {
-            //lblStatus.setText("Entrada inválida.");
-            return;
-        }
+        if (v == null) return;
 
         stack.push(v);
         canvas.clearHighlight();
-        canvas.render();
-        //lblStatus.setText("Insertado al inicio: " + v);
-        txtValue.selectAll();
-        txtValue.requestFocus();
         refreshView();
     }
 
+    // ================================
+    // POP
+    // ================================
     @FXML
     private void pop() {
         try {
-            int removed = stack.pop();              // 1) operación del modelo
-            //lblStatus.setText("Pop → " + removed);  // 2) feedback al usuario
-            refreshView();                          // 3) actualizar la vista
-        } catch (NoSuchElementException ex) {
-            //lblStatus.setText(ex.getMessage());
+            stack.pop();
+            canvas.clearHighlight();
+            refreshView();
+        } catch (NoSuchElementException e) {
+            // opcional: mostrar mensaje
         }
     }
-    
+
+    // ================================
+    // PEEK
+    // ================================
+    @FXML
+    private void peek() {
+        try {
+            int valor = stack.peek();
+            int idx = 0; // siempre el top
+            canvas.setHighlightIndex(idx);
+            refreshView();
+        } catch (NoSuchElementException e) {
+        }
+    }
+
+    // ================================
+    // IS EMPTY
+    // ================================
+    @FXML
+    private void isEmpty() {
+        boolean vacia = stack.isEmpty();
+        canvas.clearHighlight();
+        refreshView();
+    }
+
+    // ================================
+    // UTILIDADES
+    // ================================
     private Integer readInt() {
         try {
-            String s = (txtValue.getText() == null) ? "" : txtValue.getText().trim();
-            if (s.isEmpty()) {
-                return null;
-            }
-            return Integer.valueOf(s);
-        } catch (NumberFormatException ex) {
+            String s = txtValue.getText();
+            if (s == null || s.trim().isEmpty()) return null;
+            return Integer.valueOf(s.trim());
+        } catch (NumberFormatException e) {
             return null;
         }
     }

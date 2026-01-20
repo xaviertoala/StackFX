@@ -1,4 +1,4 @@
-package ec.edu.espoch.stackkfx;
+ package ec.edu.espoch.stackkfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

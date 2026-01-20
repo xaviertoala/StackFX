@@ -13,13 +13,14 @@
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Label" />
+            <Label prefHeight="18.0" prefWidth="64.0" text="PILAS" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <TextField fx:id="txtValue" />
                   <Button mnemonicParsing="false" onAction="#push" text="PUSH" />
                   <Button mnemonicParsing="false" onAction="#pop" text="POP" />
-                  <Label text="Label" />
+                  <Button mnemonicParsing="false" onAction="#peek" text="PEEK" />
+                  <Button mnemonicParsing="false" onAction="#isEmpty" text="ISEMPTY" />
                </children>
             </HBox>
          </children>
